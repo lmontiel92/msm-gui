@@ -13,9 +13,19 @@ Rails.application.routes.draw do
   get("/actors", { :controller => "actors", :action => "index" })
   get("/actors/:path_id", { :controller => "actors", :action => "show" })
 
+#routes for Movie CRUD
+
   post("/insert_movie_record", { :controller => "movies", :action => "create" })
 
   get("/delete_movie/:an_id", { :controller => "movies", :action => "destroy" })
 
   post("/modify_movie_record/:the_id", { :controller => "movies", :action => "update" })
+
+#routes for Director CRUD
+
+post("/insert_director_record", { :controller => "directors", :action => "create_director" })
+
+get("/delete_movie/:an_id", { :controller => "movies", :action => "destroy" })
+
+post("/modify_movie_record/:the_id", { :controller => "movies", :action => "update" })
 end
