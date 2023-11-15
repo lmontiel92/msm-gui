@@ -52,5 +52,27 @@ class ActorsController < ApplicationController
     redirect_to("/actors")
   end
 
+  def update_actor
+    # Get the ID out of params
+    act_id = params.fetch("the_id")
+
+    # Look up the existing record
+    matching_records = Actor.where({ :id => act_id })
+    the_actor = matching_records.at(0)
+
+    # Overwrite each column with the values from user inputs
+    the_actor.name = params.fetch("the_actor")
+    the_actor.bio = params.fetch("actor_bio")
+    the_actor.dob = params.fetch("actor_dob")
+    the_actor.image = params.fetch("actor_image")
+
+    # Save
+
+    the_actor.save
+
+    # Redirect to the directors details page
+    redirect_to("/actors/#{the_actor.id}")
+  end
+
 
 end
