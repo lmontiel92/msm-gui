@@ -28,4 +28,13 @@ post("/insert_director_record", { :controller => "directors", :action => "create
 get("/delete_director/:the_id", { :controller => "directors", :action => "destroy" })
 
 post("/modify_director_record/:the_id", { :controller => "directors", :action => "update_director" })
+
+#routes for Actor CRUD
+
+post("/insert_actor_record", { :controller => "actors", :action => "create_actor" })
+
+get("/delete_actor/:the_id", { :controller => "actors", :action => "destroy" })
+
+post("/modify_actor_record/:the_id", { :controller => "actors", :action => "update_actor" })
+
 end
