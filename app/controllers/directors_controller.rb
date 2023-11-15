@@ -50,13 +50,13 @@ class DirectorsController < ApplicationController
     #  image      :string
     #  name       :string
 
-    new_dir = Director.new
-    new_dir.name = params.fetch("the_director")
-    new_dir.bio = params.fetch("director_bio")
-    new_dir.dob = params.fetch("director_dob")
-    new_dir.image = params.fetch("director_image")
+    the_director = Director.new
+    the_director.name = params.fetch("the_director")
+    the_director.bio = params.fetch("director_bio")
+    the_director.dob = params.fetch("director_dob")
+    the_director.image = params.fetch("director_image")
 
-    new_dir.save
+    the_director.save
 
     redirect_to("/directors")
 
@@ -72,6 +72,28 @@ class DirectorsController < ApplicationController
     the_director.destroy
 
     redirect_to("/directors")
+  end
+
+  def update_director
+    # Get the ID out of params
+    dir_id = params.fetch("the_id")
+
+    # Look up the existing record
+    matching_records = Director.where({ :id => dir_id })
+    the_director = matching_records.at(0)
+
+    # Overwrite each column with the values from user inputs
+    the_director.name = params.fetch("the_director")
+    the_director.bio = params.fetch("director_bio")
+    the_director.dob = params.fetch("director_dob")
+    the_director.image = params.fetch("director_image")
+
+    # Save
+
+    the_director.save
+
+    # Redirect to the directors details page
+    redirect_to("/directors/#{the_director.id}")
   end
 
 end

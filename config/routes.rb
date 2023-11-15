@@ -27,5 +27,5 @@ post("/insert_director_record", { :controller => "directors", :action => "create
 
 get("/delete_director/:the_id", { :controller => "directors", :action => "destroy" })
 
-post("/modify_movie_record/:the_id", { :controller => "movies", :action => "update" })
+post("/modify_director_record/:the_id", { :controller => "directors", :action => "update_director" })
 end
